@@ -2,7 +2,6 @@ package com.evaluacion.ntt.dto;
 
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Pattern;
 import com.evaluacion.ntt.entity.Phone;
