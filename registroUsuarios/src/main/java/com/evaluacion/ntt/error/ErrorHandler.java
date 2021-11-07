@@ -6,6 +6,9 @@ import org.springframework.http.ResponseEntity;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.validation.BindingResult;
 import java.util.List;
+
+
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 import org.springframework.web.server.ResponseStatusException;
@@ -29,6 +32,11 @@ public class ErrorHandler {
 	@ExceptionHandler(ResponseStatusException.class)
 	public ResponseEntity<ErrorInfo> responseStatusException(HttpServletRequest request, ResponseStatusException e){
 		ErrorInfo errorInfo = new ErrorInfo(HttpStatus.BAD_REQUEST.value(), e.getMessage().toString(), request.getRequestURI());
+        return new ResponseEntity<>(errorInfo, HttpStatus.BAD_REQUEST);
+	}
+	@ExceptionHandler(ConstraintViolationException.class)
+	public ResponseEntity<ErrorInfo> responseConstraintViolationException(HttpServletRequest request, ConstraintViolationException e){
+		ErrorInfo errorInfo = new ErrorInfo(HttpStatus.BAD_REQUEST.value(), "El email ya existe", request.getRequestURI());
         return new ResponseEntity<>(errorInfo, HttpStatus.BAD_REQUEST);
 	}
 }

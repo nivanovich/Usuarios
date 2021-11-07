@@ -2,6 +2,7 @@ package com.evaluacion.ntt.entity;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.FetchType;
@@ -14,6 +15,7 @@ public class Usuario implements Serializable{
     @GeneratedValue
 	private Long id;
 	private String name;
+	@Column(name = "email", nullable = false, unique = true)
 	private String email;
 	private String password;
 	@OneToMany(targetEntity=Phone.class, mappedBy="usuario", fetch=FetchType.EAGER)

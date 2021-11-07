@@ -2,13 +2,14 @@ package com.evaluacion.ntt.dto;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Pattern;
 import com.evaluacion.ntt.entity.Phone;
 
 public class UsuarioRequest {
 	private Long id;
-	private String name;
+	private String name;		    
 	@Email
 	private String email;
 	@Pattern(regexp="^[A-Z]+[[a-z]*[0-9]{2}]*$", message="Password tiene formato incorrecto +")
