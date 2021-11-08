@@ -17,5 +17,6 @@ public class UsuarioRequest {
 	@Pattern(regexp="^[A-Z]+[[a-z]*[0-9]{2}]*$", message="Password tiene formato incorrecto +")
 	@Getter @Setter private String password;	
 	@Getter @Setter List<Phone> phones;
+	@Getter @Setter private String token;
 	
 }
