@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,23 +17,24 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 @Entity
+@Data
 public class Usuario implements Serializable{
 	private static final long serialVersionUID = 4894729030347835498L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", unique = true, nullable = false)
-	@Getter @Setter private Long id;
+	private Long id;
 	@Column(name = "NAME", unique = false, nullable = false, length = 100)
-	@Getter @Setter private String name;
+	private String name;
 	@Column(name = "EMAIL", nullable = false, unique = true)
-	@Getter @Setter private String email;
+	private String email;
 	@Column(name = "PASSWORD", nullable = false, unique = false)
-	@Getter @Setter private String password;
+	private String password;
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="USUARIO_ID")
-	@Getter @Setter private List<Phone> phones;
+	private List<Phone> phones;
 	@Column(name = "TOKEN", nullable = false, unique = false)
-	@Getter @Setter private String token;
+	private String token;
 	
 	@Override
 	public String toString() {
