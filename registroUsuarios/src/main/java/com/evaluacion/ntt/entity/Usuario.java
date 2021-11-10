@@ -33,7 +33,7 @@ public class Usuario implements Serializable{
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="USUARIO_ID")
 	private List<Phone> phones;
-	@Column(name = "TOKEN", nullable = false, unique = false)
+	@Column(name = "TOKEN", nullable = true, unique = false)
 	private String token;
 	
 	@Override
